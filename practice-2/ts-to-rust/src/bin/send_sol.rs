@@ -48,7 +48,7 @@ async fn send_sol() -> Result<(), Box<dyn Error>> {
 
     let signature = connection.send_and_confirm_transaction_with_spinner(&transaction)?;
 
-    println!("✅ Signature: {}", signature);
+    println!("Signature: {}", signature);
 
     Ok(())
 }

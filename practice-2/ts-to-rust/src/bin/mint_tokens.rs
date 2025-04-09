@@ -56,7 +56,7 @@ fn mint_tokens() -> Result<(), Box<dyn Error>> {
     let sig = connection.send_and_confirm_transaction(&tx)?;
 
     println!("Success! Tokens minted.");
-    println!("Explorer:", sig);
+    println!("Explorer: {}", sig);
 
     Ok(())
 }
