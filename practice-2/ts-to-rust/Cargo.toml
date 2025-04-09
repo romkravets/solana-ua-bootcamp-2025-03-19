@@ -1,0 +1,16 @@
+[package]
+name = "rust-app"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bs58 = "0.5.1"
+dotenv = "0.15.0"
+serde_json = "1.0.140"
+solana-client = "2.2.6"
+solana-sdk = "2.2.2"
+spl-token = "4.0"
+solana-program = "2.2.1"
+spl-associated-token-account = "4.0.0"
+tokio = { version = "1", features = ["full"] }
+mpl-token-metadata = "5.1.0"
