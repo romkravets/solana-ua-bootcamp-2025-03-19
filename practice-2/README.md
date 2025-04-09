@@ -7,3 +7,9 @@
 
 Не забудьте зберегти свою роботу (`git add`/`git commit`) та викласти її на
 GitHub (`git push`).
+
+
+# Run ts-to-rust
+cargo update 
+cargo run --bin <name_file>
+
