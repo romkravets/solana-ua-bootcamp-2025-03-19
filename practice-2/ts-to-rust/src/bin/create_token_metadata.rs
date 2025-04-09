@@ -76,7 +76,7 @@ async fn create_token_account() -> Result<(), Box<dyn Error>> {
     );
 
     let sig = client.send_and_confirm_transaction(&tx)?;
-    println!("Metadata Tx:", sig);
+    println!("Metadata Tx: {}", sig);
 
     Ok(())
 }

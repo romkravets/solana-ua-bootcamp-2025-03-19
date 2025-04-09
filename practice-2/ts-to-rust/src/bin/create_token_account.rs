@@ -52,7 +52,7 @@ async fn create_token_account() -> Result<(), Box<dyn Error>> {
     let sig = connection.send_and_confirm_transaction(&tx)?;
 
     println!("Token Account Created: {}", associated_token_address);
-    println!("Explorer:", associated_token_address);
+    println!("Explorer: {}", associated_token_address);
     println!("Transaction Signature: {}", sig);
 
     Ok(())
