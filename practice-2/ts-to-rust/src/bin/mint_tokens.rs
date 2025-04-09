@@ -55,8 +55,8 @@ fn mint_tokens() -> Result<(), Box<dyn Error>> {
 
     let sig = connection.send_and_confirm_transaction(&tx)?;
 
-    println!("✅ Success! Tokens minted.");
-    println!("🔗 Explorer: https://explorer.solana.com/tx/{}?cluster=devnet", sig);
+    println!("Success! Tokens minted.");
+    println!("Explorer:", sig);
 
     Ok(())
 }

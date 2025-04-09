@@ -64,11 +64,10 @@ async fn create_token_mint() -> Result<(), Box<dyn Error>> {
     let signature = connection.send_and_confirm_transaction(&tx)?;
     let explorer_url = format!("https://explorer.solana.com/address/{}?cluster=devnet", mint_pubkey);
 
-    println!("✅ Token Mint created: {}", explorer_url);
-    println!("🔗 Transaction Signature: {}", signature);
+    println!("Token Mint created: {}", explorer_url);
+    println!("Transaction Signature: {}", signature);
 
     Ok(())
 }
 
-//1  H3drU5wfMAn5cjFQrUnDu6VDaKExxKEp5Zbu5XXyiiR4
-//2  FK9WryedFTmFjCBQZEZZgFsUhnqGY2mVDNkfjcm5gRQy
+//  FK9WryedFTmFjCBQZEZZgFsUhnqGY2mVDNkfjcm5gRQy

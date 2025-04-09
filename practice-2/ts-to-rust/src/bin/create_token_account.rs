@@ -51,13 +51,11 @@ async fn create_token_account() -> Result<(), Box<dyn Error>> {
 
     let sig = connection.send_and_confirm_transaction(&tx)?;
 
-    println!("✅ Token Account Created: {}", associated_token_address);
-    println!("🔗 Explorer: https://explorer.solana.com/address/{}?cluster=devnet", associated_token_address);
-    println!("🔗 Transaction Signature: {}", sig);
+    println!("Token Account Created: {}", associated_token_address);
+    println!("Explorer:", associated_token_address);
+    println!("Transaction Signature: {}", sig);
 
     Ok(())
 }
-
-//6wa9Nx4BefNF9Kvw4Z669LjRSEQcTGmcJZBJ92LsxBsu
 
 //6NPHwAmCbjo2AoNLDNFZNWP4sgV6gA9JJAjwyG4WXt7H
