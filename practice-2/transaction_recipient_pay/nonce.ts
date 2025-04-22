@@ -135,7 +135,6 @@ import {
     );
     console.log("🏦 Receiver Token Account:", receiverTokenAccount.address.toBase58());
 
-    // Create mint instruction
     const amountToMint = 100 * 10 ** 9;
     const mintInstruction = createMintToInstruction(
       mint,
@@ -145,7 +144,6 @@ import {
       [signer1, signer2]
     );
 
-    // Create transaction
     const nonceAdvanceInstruction = SystemProgram.nonceAdvance({
       noncePubkey: nonceAccount.publicKey,
       authorizedPubkey: payer.publicKey,
@@ -155,14 +153,12 @@ import {
     transaction.recentBlockhash = nonceBlockhash;
     transaction.feePayer = payer.publicKey;
 
-    // Sign transaction
     transaction.partialSign(payer, signer1, signer2);
     console.log(
       "Transaction Signatures:",
       transaction.signatures.map((sig) => sig.publicKey.toBase58())
     );
 
-    // Simulate transaction
     const simulation = await connection.simulateTransaction(transaction);
     if (simulation.value.err) {
       console.error("Simulation failed:", simulation.value.logs);
@@ -170,7 +166,6 @@ import {
     }
     console.log("Simulation succeeded:", simulation.value.logs);
 
-    // Send transaction with retry logic
     let signature;
     let attempts = 0;
     const maxAttempts = 3;
@@ -190,7 +185,6 @@ import {
       }
     }
 
-    // Confirm transaction
     try {
       await connection.confirmTransaction(signature, "confirmed");
       console.log(
