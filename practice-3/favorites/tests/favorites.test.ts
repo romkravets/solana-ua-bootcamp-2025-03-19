@@ -8,27 +8,33 @@ describe("favorites", () => {
   const provider = anchor.getProvider();
   const program = anchor.workspace.Favorites as Program<Favorites>;
 
-  test("Create and update favorites", async () => {
+  test("Set and update favorites", async () => {
     const user = web3.Keypair.generate();
 
     const favoriteNumber = new BN(23);
     const favoriteColor = "red";
 
+    // Airdrop SOL to the user
     await provider.connection.requestAirdrop(user.publicKey, web3.LAMPORTS_PER_SOL);
 
-    // Set initial favorites
+    // Calculate PDA for the favorites account
+    const [favoritesPda] = web3.PublicKey.findProgramAddressSync(
+      [Buffer.from("favorites"), user.publicKey.toBuffer()],
+      program.programId
+    );
+
+    // 1️⃣ Set initial favorites
     await program.methods
       .setFavorites(favoriteNumber, favoriteColor)
       .accounts({
-        favorites: web3.PublicKey.findProgramAddressSync(
-          [Buffer.from("favorites"), user.publicKey.toBuffer()],
-          program.programId
-        )[0],
+        favorites: favoritesPda,
         user: user.publicKey,
+        //systemProgram: web3.SystemProgram.programId, 
       })
       .signers([user])
 })
 })
+
 
 
 // import * as anchor from "@coral-xyz/anchor";
